@@ -546,11 +546,11 @@ cps()
 	cprintf("name \t pid \t state \t \t Adress \n ");
 	for(p= ptable.proc; p< &ptable.proc[NPROC];p++){
 		if( p->state == SLEEPING )
-			cprintf("%s \t %d  \t SLEEPING \t %p \n ", p->name, p->pid,p);
+			cprintf("%s \t %d  \t SLEEPING \t %p \n ", p->name, p->pid,p->pgdir);
 		else if (p -> state ==RUNNING)
-			cprintf("%s  %d \t RUNNING \t %p \n ",p->name, p->pid,p);
+			cprintf("%s  %d \t RUNNING \t %p \n ",p->name, p->pid,p->pgdir);
 		else if (p->state ==RUNNABLE)
-			cprintf("%s \t %d  \t RUNNABLE  \t %p \n ",p->name,p->pid,p);;
+			cprintf("%s \t %d  \t RUNNABLE  \t %p \n ",p->name,p->pid,p->pgdir);;
 			}
 	release(&ptable.lock);
 
