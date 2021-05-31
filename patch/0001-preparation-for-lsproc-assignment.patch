@@ -1,0 +1,111 @@
+From 05825b82b11f9cf403f5e762ac2fef1989c158d3 Mon Sep 17 00:00:00 2001
+From: Noam Cohen <cnoam@technion.ac.il>
+Date: Tue, 18 May 2021 08:55:54 +0000
+Subject: [PATCH 1/2] preparation for lsproc assignment
+
+---
+ Makefile |  3 ++-
+ init.c   | 16 ++++++++--------
+ lsproc.c | 13 +++++++++++++
+ sh.c     |  2 +-
+ 4 files changed, 24 insertions(+), 10 deletions(-)
+ create mode 100644 lsproc.c
+
+diff --git a/Makefile b/Makefile
+index d313f2f..2d5f2e4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -182,7 +182,7 @@ UPROGS=\
+ 	_wc\
+ 	_zombie\
+ 	_open_files\
+-	_lsof
++	_lsproc
+ 
+ fs.img: mkfs README $(UPROGS)
+ 	./mkfs fs.img README $(UPROGS)
+@@ -255,6 +255,7 @@ EXTRA=\
+ 	printf.c umalloc.c\
+ 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
+ 	.gdbinit.tmpl gdbutil\
++        lsproc.c
+ 
+ dist:
+ 	rm -rf dist
+diff --git a/init.c b/init.c
+index 4c88c40..d76d266 100644
+--- a/init.c
++++ b/init.c
+@@ -4,7 +4,7 @@
+ #include "stat.h"
+ #include "user.h"
+ #include "fcntl.h"
+-#define SINGLESHOT
++//#define SINGLESHOT
+ 
+ char *argv[] = { "sh", 0 };
+ 
+@@ -28,21 +28,21 @@ main(void)
+       printf(1, "init: fork failed\n");
+       exit();
+     }
+-    if (pid == 0) {
+-        exec("open_files", argv);
+-        printf(1, "init: exec sh failed\n");
+-        exit();
+-    }
++    //if (pid == 0) {
++    //    exec("open_files", argv);
++    //    printf(1, "init: exec sh failed\n");
++    //    exit();
++    //}
+ 
+     sleep(100);
+-    // exec the lsof
++    // exec the lsproc
+     pid = fork();
+     if (pid < 0) {
+         printf(1, "init: fork failed\n");
+         exit();
+     }
+     if (pid == 0) {
+-        exec("lsof", argv);
++        exec("lsproc", argv);
+         printf(1, "init: exec sh failed\n");
+         exit();
+     }
+diff --git a/lsproc.c b/lsproc.c
+new file mode 100644
+index 0000000..57e7ff4
+--- /dev/null
++++ b/lsproc.c
+@@ -0,0 +1,13 @@
++// user space program to call the syscall
++
++// TODO: you have to fill in the missing includes statements and code
++// to make the code usable. 
++// Hint: look at other user-space programs in this directory
++//
++#include "types.h"
++#include "user.h"
++
++int main(){
++        exit();
++}
++
+diff --git a/sh.c b/sh.c
+index 054bab9..6256563 100644
+--- a/sh.c
++++ b/sh.c
+@@ -133,7 +133,7 @@ runcmd(struct cmd *cmd)
+ int
+ getcmd(char *buf, int nbuf)
+ {
+-  printf(2, "$ ");
++  printf(2, "xv6$ ");
+   memset(buf, 0, nbuf);
+   gets(buf, nbuf);
+   if(buf[0] == 0) // EOF
+-- 
+2.17.1
+

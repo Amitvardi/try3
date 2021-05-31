@@ -1,0 +1,563 @@
+From 67c98bc4eb0c42266ee8646bd92187fafc173d3b Mon Sep 17 00:00:00 2001
+From: Amit <mytwrdy@gmail.com>
+Date: Mon, 31 May 2021 15:51:59 +0300
+Subject: [PATCH 2/2] first commit msg
+
+---
+ .defs.h.swp    | Bin 0 -> 20480 bytes
+ .proc.c.swp    | Bin 0 -> 16384 bytes
+ Makefile       |   9 ++-
+ defs.h         |   5 ++
+ lspork.c       |   0
+ lsproc.c       |   2 +
+ my_patch.patch | 183 +++++++++++++++++++++++++++++++++++++++++++++++++
+ patch.txt      |   0
+ proc.c         |  24 +++++++
+ ps.c           |  12 ++++
+ syscall.c      |   4 +-
+ syscall.h      |   2 +
+ sysproc.c      |   6 ++
+ user.h         |   4 ++
+ usys.S         |   1 +
+ 15 files changed, 248 insertions(+), 4 deletions(-)
+ create mode 100644 .defs.h.swp
+ create mode 100644 .proc.c.swp
+ create mode 100644 lspork.c
+ create mode 100644 my_patch.patch
+ create mode 100644 patch.txt
+ create mode 100644 ps.c
+
+diff --git a/.defs.h.swp b/.defs.h.swp
+new file mode 100644
+index 0000000000000000000000000000000000000000..21a31a26e8de870c1037628ae44470253e920043
+GIT binary patch
+literal 20480
+zcmeI33yd9A8GuI$lww=8kl-tEcr@;=bYC`5tgjY|kG7~7h(hc-ckbEU@jhlck9~+1
+zjEO=>8$t|0qOGw8qZkFzXemTRK?RI2tThHOA~6_<7(@-E;`h&-xp(f|bC()Oj5;^@
+z_THKEpZ}cmpZ9;x*2XV>$98+e=(xq_rIvN^K5NHaPb{-GzrwPjIH{|4EFnvN&K*Bz
+z{p7^>y2<g$@o3$|_~bce@m*Ts*uvad>w=`#^xUz!nvO<i&GOaT$^w-IULXr3@$|Y4
+zt1fyy9aS`*e%h(_Noy{8fs|KjDhpH=s4P%fpt3+^fyx4v1u6?v7Wi+lKpZTyE+?bM
+z=*%9gzh6}P&fo9S?~f~mFVoL&*54m1h3m)atFl04fyx4v1u6?v7N{&xS)j5&Wr4~9
+zl?5sbR2KLTSiq@U*5pepYX`{rf4<NEE6-2D%{uHyd>@3b!d}=7mq8mYg-hT)upV9p
+zkFB<>AHv;m0Iq|ba6YVtRj>>mTxD4gz%SwJa23>GGpvL|D=lju?1k%K2MohsUTj(S
+z!586^;J_Q<WO(#M%laPdfdIC^N;td%J@8rh6eMslOu_`Lg{Mxitlz=`_%?h6_CNsd
+zgfrlDcqKfu+_IjAKf|4{A3hE)Y=%?dZ^xq(9)o+}^Y961LIYgb4r4G1r@=AsFb<aA
+z!(rG5JK;@m0xXBWQ&Eq@&)^$yJuJcw*aWYI6X8!dX1)g3LIXC!tKeB2KEH$S!=3Og
+z_$Yh?+Hfum`po%W-R^!$kGA9POuSGHMRAz8u^k0oyXm`)k>QQj*jVRr)U~W~%xFG#
+zXY+Wj-;UKnJTh{otu^Iuv?386eQ&>(MNc*BL!ukOauV}SLnT2PDjD+Hakn7+ns>Z-
+zP}C$+q1PT99yOKHnmbu87QUR7NX0?uyLox#w`8eL%$-#OixWv;(o|uVX?tqQiQ~|#
+zC9#^C8X9W*p^B5RJ#5e`>D7}~mSa<Rv8=iV(maa6T8nAciI&$*kc_03Y%RJ$lAEw>
+z-iFs~4)KzB<)E3+pHFp~gQxwlk!vkmNG)_LrL30BcpdA}{3HpQ-q_f?H@$7k<_ouM
+z+WH22;w-B#JAoId`Ou3y%~)R06x~@T<jb5%kqMPk?^LNFPC4@u$8GviIibNRI8C}!
+zp2W1*RD~{*Jz`!dDw<8bEb!c7)%It|Rc)u%RJx*4O|BR2H0f&5xx2=vyQ;7)#z~uk
+z?M1C1%}OgUMON+llphQk+Fnh~c<ljUO@C&pr)Fx&w5i`n#*md#*mX6R*@PFSoU}YQ
+z^y{kWEb2m+jnZ_mS`<5B>;yxJG=ekjB&#B$XwfQ00p)vnbJkXy^P5ggZKitDzLX}~
+z-&4}p-9}wj@3#CX_FA3x6vl4diIqJPY7<CNOh#zb>Xb;2Bx$wr#waMIn@qD$SCI5g
+z_HT&P#B)kbhe{2ly^8Fm-&xy9|2DF=E=gpW&t8}^<@r*sqTRJ!)7lbkTB6=R#AYGg
+zR&UeV(>`u9d}Ik{BF2R4DxA-|<Dj-!S4Gp7tIU(&Za1RG@kY{;wp;w9?cU21^V+o8
+z?wBO)abT;Y?Z$l(^BI~j(_|<^SzjDI0QMxN^<?=Wzip?byub;$JepOl9yc+iQM6P4
+z<?@Ommnn*wKZ^6QxA1_%K3gV%H1}Q`8RgPdNsz=xEBf4WN2N^GLeH%#Z4Y9OZ0IVR
+z&8xGB>3M0et(Wzltg50}Ka_d5ClYm4_rj*{H_GZdGo8dXH4cgAwM!-GiDfXlw5X_-
+z56RtCQo_7h6T{deQH^-?0ImfaI)Kb?J%fKb;dPP~gSClYZbu>|Js>xkj-_oOA*LdV
+zRB<{tr&Vr%B310oI*~N8^kw-`sJ-;P!Bq0TXI+pBn)H>2Ns%>~Pc107r$<V$F}A!n
+zjctL`_H=~de`jqeUDOvdFrDycXk<8>><r~}0~Xcsbe^lx(NU97uCHg1)Tx*<Uh8Qj
+z14iXqsG8k%mlo3Il_#k!8zB~SJ;PnO#%smu#+o(Hmpq{<)$qLj=<HBb*$i#8o|m#T
+za+)#Om{G)ymhAtJWuN+T_Or78&(H7gXAl1+n1iiwCai{4@K5&bKY`Cc114bt*23fL
+z*>8hu;8HjXj<8?97w&;O;06d_E3Abh?AafL2jCZQ3)~Dhg6!=BxDdu+4A#PN@CbYQ
+zyWuXl1NOo$*a2t53iu6s`U7w^yd6%3e^Az6!+!9g4d;Q_;1sAnl?5sbR2HZ#P+8#r
+z)dHvUk9l5O*%xftwq^U!!mvFQc^_8(G(X4mFMeJ+{(<3PSwOavR!xPrKW(d~YO(K&
+z@B*>aT~PIPB5pfj=q&d8YTc%C!XQ@3P*7J>u{{#Zu(8P2^Y%zG=dc(oFXml8SoGPp
+zr7_t4W@|H9l<5b<0y3KS@D?}bTDjAuyoSpJ5(M;$D|L0EDNCih?2^<)teCnXlTF{L
+z7sd3pSu4+X?n^E!WmRcVA#n^P6hBHQTZRnPRk}$iD(p$UY~`h;%Z?gqYO>*UjFJW$
+zjEBoR36`h@f_k<xeYGTh!Ja+9T+6ilPjJ++8FvSG^CXz^c3fTMWU}y{bmWz!q@7B-
+z9&`7;9eZvgk_~LXLn59lW;u6C<>pQ!_DAySWUwa#ap)MGsN(ADIhLR|rteI4i54Rl
+z1LvI}&qUt3rxl%qqUr5UT8qYwvB(iw%kj%3<%Bb$i%`8kA0QO;3Jr3uqfU}c)#(%|
+zsxFZfw%jI3yzK^y`OdQ7HX4*f8e<7}Q^&hT`nk>0Zz48TyXdB(@%QD&nZ^kbE}f-x
+z7%S**sTQ3k_oAkSFAM<L7Bv$`vgOaITr?|gs%~JmiPH71X;D)=u`{PiZKLm8+G%?9
+zRdj51UgYjc!-zENH*q-6WXERcPY(;_3{4bCTPb%-w(H7?)X_)KCy|3ANWt<HP5mYC
+z1Gm|6)R*%UB+={=!8*J7gp!XHrjm&bd(4-gnd+W1*m_5!eTMEzuUBE<MtSp)MkG0r
+z{r@%=IUkhsUiSa_{eC(7e*_N0y&z}*Uxw@9YFL1Ikn?{z_aB87@CSSV55pn2750D&
+zuY(b=;Te1aPs0=NQ@9Z>hbb6_C-Di~4hP{@xD3vR)$l0${vW^>U>Cd}Cg6B@kp2Em
+zup4SH3{SD&KM1$MEpRPF@GiIjHp3bapTHsb75o@(g559!o8YZ*Hsn5nmHd7PzsYyu
+zb8rPr!Fo6e*1!t*BWL;Ff&Fk5TnSgehhQ6Qg}1<Kz=CHv+kXmfhdpo!tc5e+WH=Gz
+z-2dnBO}Gv&13C9U59Hi`Io!7_JNLhm@Att5cr_fMp5@&CA-ErIfKS8KkhXyrc)?rl
+zGu7n)M#Oxu%X_(Dtg9{u6edBtx*VXJjJ}1y;BA-^Brsb(Yw7gJpxfTEM<O!qRhI**
+z%K@ALRF?y|${{07bvYnkN#?$Ze3BY)I9go}$R;Q+N$(N#TF)?{d)4KD`~pW|16!Qr
+ztIGk^<p7+x#U}ATeK{cYcXV#PbZ+LzZItdq?w#nq(VK?O3q6H*p2cz9ePBu0c}Pe0
+L&XcSLH(LJ!Smg2w
+
+literal 0
+HcmV?d00001
+
+diff --git a/.proc.c.swp b/.proc.c.swp
+new file mode 100644
+index 0000000000000000000000000000000000000000..265fad5f5a8ebbdc9cc90ad86dc358ecc6847b29
+GIT binary patch
+literal 16384
+zcmeI2Uu+yl8Njzm3OH?nf&{eCGIdFM=l^!olE!g@6Fb4gaZH?mh-;kn-rn8Tce~5}
+zvE!If6@)4wwa_Bb7Z6pcc%VqM2mx)y15l}bD*tI|A9yIDf`UqU<0bI>W_B-U$Brr}
+z5=eW>&v!R7JM+yq-#0VgcUc(t*u+t_yKlha^>)kJ{f9?S|Lpu$>**bq6(?!M^%JSN
+z<m=$TZM%jB2YQDFh6du^!GWRMHg5izti%2@OSkrh=|aPE`ok!2`kam17o~*;3JttL
+z8c36B@9wKk-i)J4k2iMSpx*h8lW$PxMK^^83Jnw*C^S%LpwK{}fkFd?1_}-QKWHEc
+zw^?^0=$1^_Z)ES6t$Y7x_WEj8{_wi`^I81^S^0;u4)T7sX61RP|J=Izth#tBG*D=u
+z&_JPqLIZ^c3Jnw*C^S%LpwK{}fkFd?2L1~guq!6^|CS^G`29bR|Nr_n%X$%>fydxM
+z_#&Kx8dPBp#-R%oydN$D3toMzW&Ii+habWN@D;cZJ`bORd6<LSVGw%ZMz|8TLkB!{
+zm1W%tG1S0?6Yx>k4O_v2KVNBC4}lAZ-~(_KbiiM(pdS7N--Em1EG)t)_%IAZ4_pUV
+z!{x9Qw!q)FTh@=^UZ}z`7=~^r!@J=M*bc9CSk~X*Nq7+Mg?k`@I@I7a9D!S47rYm)
+zh4XJg=kOGKAHEA;hWjCcS=a-&!4`Pw&6f2%JOPix*I)%Ep$sK>A6yI9KnJ|?Cd>LG
+zJO{slpTcM1F7ROyW??s64bNPTEO0;6U@zPV+u^lsmh}RB8y<mWI1TgA3;!VL^Aora
+z&cHI9hIu#yV{j1O1+QX%ufU7&J9riz0d1GY?v;v@D0LDg|7S#XIccOnjHu>{d?=NN
+zEu~V=PgHz%*jlw}QLwBlq{uH@yjlJI>bRSvk*@|+;Hx-w95;@8RPUgCt=e8AjodzI
+zc9^FXV?_K97(F8GZi-dYZ3fYbT3As&e-bzD!zUOwavQE4yQQ6BVlOn@zDD3IA`mrU
+z@4h&(6IYF><0q%4Mh{Gm>vG%qRO&?+J)snXFSw4K#;!{0uCn9UtNBe4qv_S^OeIKY
+zpzI`QdQKlB@W689A&W`^saf)34;gxt?N@XcB8>84WjEqL`L0`WE9S8%^=Uwj=!psT
+znGua-sv1NTnxchZ$u-aD_H9BjW^0NKH;Gk%)RA(6$c?l4JIfVj@7qn+D|PmF>V=B!
+zs>^yh;Yx|erLISHdcK!9LB;LtQL%T{4XSxvxur|~8^b==3+ZoQIMY?l^L@{+si3Oz
+z4*F({=5^~>T2CLInK*^!^@8Z)YQwI@)Et_epE%T35lbO5Nux^KR)H=yuBb>wX=eQJ
+z{K>J=6QgSHUUhR>eOir8PtKp589(0EhjXFn!DD0N8#cwpVmFbgC)FM`(9%VhE)i82
+zt2)c57p5gsPnVkVSXirgQIDEm@O(R3na`Cnj~zxyk1F8_<%=s(xbB+HZQpZBomgNb
+z&+bt{nuvCd@$WYa=v7Otu@D4_({PdT%Vjmf;*=3m9?pC;6rn|Kn%WHvGIv?Z+%t)b
+zM>=&o+C=8rxs7Inz_WAG@0xvqkyfo-^wLt`Rmzt96{ntY6P1Rl>P0ahm|n~9shu7@
+zJbvK#_~?;6>gJ)`tMy(%mm+%aJ}2-Kq|Gg`B)d%+H(89_L<G68a#_o^<x{eJS#iFE
+z*;lciYz|pTS2@-i!*qMmt@efX4zxgBdVFar9cWpS$PP1E%%i(REZHFHo>OO+lKJR;
+zB5RrLADLo&mp#wSQT7sTFD#Giq=`6~oyeXblkLeAl2qGdmoBRjp1i5_Ni`E^(zTad
+z6$L?4dQ|eH(vPy8vYs*_w6%x;>|EXI$jph+gGX`)mi<<CT(gf$kH#OeUH0S@J~t-C
+znTclIjHpFzc`XZFr3tDT6?2pgdJ!vh8!~HWQOj}3O+EDVriMB2sk>XoLu4M-TmAUa
+z1IIscY}l#>sbAS6lWLcD^Ntm-T7d5LgJy0_<3i6P%FIvv3)Pjhs?3=qE;WpY?N#|H
+zBqg&`)5nh;oTH+<yDWlia_~^2J+LdYy!NwJ`_u)uHBKc{^_+I+>k=P3CfonA$LW>N
+zSf8gxF_EheJ&vV7$>HP4`IBp2x0|S%srQI9e$AETK%=xbD%FRYY%HGLz%69N$spi(
+zGd;<SImndOh$x8mnZ~rQ%NUn*bXGA4orY(w6QW&*4OKKN3gT;X#R=1_HjV48rt3GM
+z*0w}*ZY#r9c1_XBQ>#{6d#yJ-v>`gPE8=Q0A|8Q%h<>CC)1K>zOnJ<U<(k2)**c>%
+z<k;nCPwIH+GFOAh)wcvrV5ja@(gx?fzNO?FyT9lM%f7Nh&+#g^`({HoZq+i>oeUb!
+zdU}HuS5l>{pwB!eyS(|7nIh*3>fu!Out1;2!>YU6D>GH?W;SzMawF`bX@@<El|ei=
+zVjGZ}nin$@v*~biQ2FTD{xmv0aZpW+afQjIR!i;3X7a8!B`!U(ZF#jcNV&uuwO1%X
+z5pg|88x>V&vk}AB(?!OH`D7N63fA15czSJ>gQe5&vX|7`73}(=@|L>rN?9ydUn5H8
+zo%$Lfs^A~Xl8x4*JUNey(d2%kZ?PyyuY21fad}IYUDt0}K_;lSdE7<ca*}!!q_w)X
+zi$)NH+G~!c9B872jYY2*bJ4o8MG9k8(m3KV3~tSNmzj94Ecmd+U$0V<b!1v%e6Mpb
+z)1|no+&|acjJfKWd$L&GsufD3_M;l-(0hv(b=h8Y({NDN<4EiZJY;2;1~VCR>X{yf
+z*HmTaRbC|v<C`rTI~b&&i+3^AmET*aKBtVJ;{9zNtNk<ISua$@%tT+d<<BsE>y=(5
+zWb%Bc!T+XLoq3bKdS_dyxcl0YGrMnHThMH#>k8av!(QQPwzfFLF`8?OFw%H!NwN|W
+zx*&qY{|^((Nz5qmzhh!8>t$m2-@=dJNq7S8hea5J55W)&!1Zt)Y=dWs*?#~JK@2D0
+zgK#ZKOur2*c$t{}1$Z8wgQww3;K45F2L;!|7LfS<m+%Bgoc{%g!3T-?XJ8C&fn9K(
+zxcw#g72E?&sK7C}9xQm4c>SAjH{1n2+yQl{fdg|e3m<_AxB;$#_rULo*`J25LlaKI
+zDD=Y>V8PFc(;tQJz{4Q1{M~Q|^um?!3v~Y&EI|yja0;eCuS>Qj#ap3)LIZ^c3Jv^k
+zYT%sJk%c@%LtGvBvSCiJgLWMqBtW=~R7;&ZVs(3>c2tzS<rzZxe7mnYdkFk=Zj5)r
+zOfEhh9d3g=wA{zrg2Mc{@};|;m^yq>&l0s>+_mc6$9+e~vLn(tPhO($naT0->Gsa0
+zQ<Kwc>zx~OTZlZOT2JYoI~KT3b7>OYkV$Q+Vvm&Mm2#z$l%W=FCP9U@p3b}<xlFb{
+zjX--|NBg{Q8Rm5~*TUsPif}Q3f>Up;MtPMo9Z9zdIXg5!Al0D*c2XN_;`NQgb&1yL
+zsbwajO<6lhJMd=KMq7!V_9j7nM}I%jaj3}NwsKurY)tI1D3PYb$a&PPLmo!x!+PUH
+z$H4S3t^=R;P>5W4d)hdN%mZ!Nd7UwE!nkDe?mGH30cLAPdEBW~9(fXA=U$<9gd~AO
+zhX9mSRr)2`^F}1V+&eg+cJ4IQ>IM^ZN_NAvtGS7egQC!hOIeN#Gt3fOB<~i&?jh+s
+z>v>&%C0|?AFa5Pd!bS1b9kIxzU53Q0c!>Tg%hM9nEY67P+`oT+r;%QqR(B_1gh>(U
+z_js1R^ru#!-LfRLkD2Lt=6R*PYHECP{HQVixGZ(+d&!lc<6%E_&G74{_@AVZh-R{%
+zSy-JxG3!?1NG2v<@uCaA)95^=#9f|Los&Par;Z&xFfl%-cy*o)nhT!WDaF}FBjufv
+z9pbGgFPGm<sE~4^a8sVIl$6H}*A27wCR1d(cbf~*N?_WXX`AxYC;wZ~<)T6oSy}c=
+zCK1oh5gx8eXi8vKNt<DNbV>+36(}9&k(M&?^s-ywX9!ZHOg<%N*|eRy=ew$!Mv@QH
+zLHhBO)a!Dc_+F=;bquCHIW50Dv08D!&qfknPs_nTN4ZlrNR3F>jFmT2>JVOAaTn5>
+zjJiIlb?cgFzLzj}(;ujE=gVC%&)LZ%^4jDKGnH#Hp7{}!Ke^82^0mtClZk$uz`iw0
+zo$E4-$l2z*lEvf43(5b;3olvpbXrD-?NVe0ko}NMl$>Cz*1wYym8Uk@J*io5%Bz-$
+zA-|yLA@h_7YopgR4sFLJneURZl$^F?C3)|2%GuJI?BsIb-;|J8_xKfpv{gg#!Dv1f
+m3pm0MIzyA2fZmrS5m@t<Fdwr+%aU!nJbBV2OP6dq#eV@9%zUQ+
+
+literal 0
+HcmV?d00001
+
+diff --git a/Makefile b/Makefile
+index 2d5f2e4..679c570 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,6 +27,7 @@ OBJS = \
+ 	uart.o\
+ 	vectors.o\
+ 	vm.o\
++	
+ 
+ # Cross-compiling (e.g., on Mac OS X)
+ # TOOLPREFIX = i386-jos-elf
+@@ -180,9 +181,11 @@ UPROGS=\
+ 	_stressfs\
+ 	_usertests\
+ 	_wc\
++	_lsproc\
+ 	_zombie\
+ 	_open_files\
+-	_lsproc
++	
++
+ 
+ fs.img: mkfs README $(UPROGS)
+ 	./mkfs fs.img README $(UPROGS)
+@@ -251,11 +254,11 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
+ 
+ EXTRA=\
+ 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
+-	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
++	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c lsproc.c zombie.c\
+ 	printf.c umalloc.c\
+ 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
+ 	.gdbinit.tmpl gdbutil\
+-        lsproc.c
++        
+ 
+ dist:
+ 	rm -rf dist
+diff --git a/defs.h b/defs.h
+index 82fb982..12e5529 100644
+--- a/defs.h
++++ b/defs.h
+@@ -120,6 +120,7 @@ void            userinit(void);
+ int             wait(void);
+ void            wakeup(void*);
+ void            yield(void);
++int             cps(void);
+ 
+ // swtch.S
+ void            swtch(struct context**, struct context*);
+@@ -186,5 +187,9 @@ void            switchkvm(void);
+ int             copyout(pde_t*, uint, void*, uint);
+ void            clearpteu(pde_t *pgdir, char *uva);
+ 
++
++
++
++
+ // number of elements in fixed-size array
+ #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
+diff --git a/lspork.c b/lspork.c
+new file mode 100644
+index 0000000..e69de29
+diff --git a/lsproc.c b/lsproc.c
+index 57e7ff4..9a7e09f 100644
+--- a/lsproc.c
++++ b/lsproc.c
+@@ -8,6 +8,8 @@
+ #include "user.h"
+ 
+ int main(){
++	cps();
++
+         exit();
+ }
+ 
+diff --git a/my_patch.patch b/my_patch.patch
+new file mode 100644
+index 0000000..6a050a3
+--- /dev/null
++++ b/my_patch.patch
+@@ -0,0 +1,183 @@
++diff --git a/Makefile b/Makefile
++index 2d5f2e4..679c570 100644
++--- a/Makefile
+++++ b/Makefile
++@@ -27,6 +27,7 @@ OBJS = \
++ 	uart.o\
++ 	vectors.o\
++ 	vm.o\
+++	
++ 
++ # Cross-compiling (e.g., on Mac OS X)
++ # TOOLPREFIX = i386-jos-elf
++@@ -180,9 +181,11 @@ UPROGS=\
++ 	_stressfs\
++ 	_usertests\
++ 	_wc\
+++	_lsproc\
++ 	_zombie\
++ 	_open_files\
++-	_lsproc
+++	
+++
++ 
++ fs.img: mkfs README $(UPROGS)
++ 	./mkfs fs.img README $(UPROGS)
++@@ -251,11 +254,11 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
++ 
++ EXTRA=\
++ 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
++-	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
+++	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c lsproc.c zombie.c\
++ 	printf.c umalloc.c\
++ 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
++ 	.gdbinit.tmpl gdbutil\
++-        lsproc.c
+++        
++ 
++ dist:
++ 	rm -rf dist
++diff --git a/defs.h b/defs.h
++index 82fb982..12e5529 100644
++--- a/defs.h
+++++ b/defs.h
++@@ -120,6 +120,7 @@ void            userinit(void);
++ int             wait(void);
++ void            wakeup(void*);
++ void            yield(void);
+++int             cps(void);
++ 
++ // swtch.S
++ void            swtch(struct context**, struct context*);
++@@ -186,5 +187,9 @@ void            switchkvm(void);
++ int             copyout(pde_t*, uint, void*, uint);
++ void            clearpteu(pde_t *pgdir, char *uva);
++ 
+++
+++
+++
+++
++ // number of elements in fixed-size array
++ #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
++diff --git a/lsproc.c b/lsproc.c
++index 57e7ff4..9a7e09f 100644
++--- a/lsproc.c
+++++ b/lsproc.c
++@@ -8,6 +8,8 @@
++ #include "user.h"
++ 
++ int main(){
+++	cps();
+++
++         exit();
++ }
++ 
++diff --git a/proc.c b/proc.c
++index 806b1b1..f2d432e 100644
++--- a/proc.c
+++++ b/proc.c
++@@ -532,3 +532,27 @@ procdump(void)
++     cprintf("\n");
++   }
++ }
+++
+++int
+++cps()
+++{
+++	struct proc *p;
+++
+++	//Enable interrupts on this processor.
+++	sti();
+++
+++	//Loop over process table looking for process with pid.
+++	acquire(&ptable.lock);
+++	cprintf("name \t pid \t state \t \t Adress \n ");
+++	for(p= ptable.proc; p< &ptable.proc[NPROC];p++){
+++		if( p->state == SLEEPING )
+++			cprintf("%s \t %d  \t SLEEPING \t %p \n ", p->name, p->pid,p);
+++		else if (p -> state ==RUNNING)
+++			cprintf("%s  %d \t RUNNING \t %p \n ",p->name, p->pid,p);
+++		else if (p->state ==RUNNABLE)
+++			cprintf("%s \t %d  \t RUNNABLE  \t %p \n ",p->name,p->pid,p);;
+++			}
+++	release(&ptable.lock);
+++
+++	return 22;
+++}
++diff --git a/syscall.c b/syscall.c
++index d2218c3..514df3c 100644
++--- a/syscall.c
+++++ b/syscall.c
++@@ -104,6 +104,7 @@ extern int sys_wait(void);
++ extern int sys_write(void);
++ extern int sys_uptime(void);
++ extern int sys_halt(void);
+++extern int sys_cps(void);
++ static int (*syscalls[])(void) = {
++ [SYS_fork]    sys_fork,
++ [SYS_exit]    sys_exit,
++@@ -126,7 +127,8 @@ static int (*syscalls[])(void) = {
++ [SYS_link]    sys_link,
++ [SYS_mkdir]   sys_mkdir,
++ [SYS_close]   sys_close,
++-[SYS_halt]    sys_halt
+++[SYS_halt]    sys_halt,
+++[SYS_cps]  sys_cps
++ };
++ 
++ void
++diff --git a/syscall.h b/syscall.h
++index 1dd7b9b..f03577c 100644
++--- a/syscall.h
+++++ b/syscall.h
++@@ -21,3 +21,5 @@
++ #define SYS_mkdir  20
++ #define SYS_close  21
++ #define SYS_halt   50
+++#define SYS_cps    22
+++
++diff --git a/sysproc.c b/sysproc.c
++index 4fc95e9..db7aa61 100644
++--- a/sysproc.c
+++++ b/sysproc.c
++@@ -90,6 +90,12 @@ sys_uptime(void)
++   return xticks;
++ }
++ 
+++int
+++sys_cps ( void )
+++{
+++	return cps ();
+++}
+++
++ int
++ sys_halt(void)
++ {
++diff --git a/user.h b/user.h
++index 14f64db..a134a35 100644
++--- a/user.h
+++++ b/user.h
++@@ -24,6 +24,7 @@ char* sbrk(int);
++ int sleep(int);
++ int uptime(void);
++ int halt(void);
+++int cps(void);
++ 
++ // ulib.c
++ int stat(const char*, struct stat*);
++@@ -38,3 +39,6 @@ void* memset(void*, int, uint);
++ void* malloc(uint);
++ void free(void*);
++ int atoi(const char*);
+++
+++
+++
++diff --git a/usys.S b/usys.S
++index 0d4eaed..b4b3fc7 100644
++--- a/usys.S
+++++ b/usys.S
++@@ -30,3 +30,4 @@ SYSCALL(sbrk)
++ SYSCALL(sleep)
++ SYSCALL(uptime)
++ SYSCALL(halt)
+++SYSCALL(cps)
+diff --git a/patch.txt b/patch.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/proc.c b/proc.c
+index 806b1b1..f2d432e 100644
+--- a/proc.c
++++ b/proc.c
+@@ -532,3 +532,27 @@ procdump(void)
+     cprintf("\n");
+   }
+ }
++
++int
++cps()
++{
++	struct proc *p;
++
++	//Enable interrupts on this processor.
++	sti();
++
++	//Loop over process table looking for process with pid.
++	acquire(&ptable.lock);
++	cprintf("name \t pid \t state \t \t Adress \n ");
++	for(p= ptable.proc; p< &ptable.proc[NPROC];p++){
++		if( p->state == SLEEPING )
++			cprintf("%s \t %d  \t SLEEPING \t %p \n ", p->name, p->pid,p);
++		else if (p -> state ==RUNNING)
++			cprintf("%s  %d \t RUNNING \t %p \n ",p->name, p->pid,p);
++		else if (p->state ==RUNNABLE)
++			cprintf("%s \t %d  \t RUNNABLE  \t %p \n ",p->name,p->pid,p);;
++			}
++	release(&ptable.lock);
++
++	return 22;
++}
+diff --git a/ps.c b/ps.c
+new file mode 100644
+index 0000000..f1cb210
+--- /dev/null
++++ b/ps.c
+@@ -0,0 +1,12 @@
++#include "types.h"
++#include "stat.h"
++#include "user.h"
++#include "fcntl.h"
++
++int
++main (int argc, char *argv[])
++{
++	cps();
++
++	exit();
++}
+diff --git a/syscall.c b/syscall.c
+index d2218c3..514df3c 100644
+--- a/syscall.c
++++ b/syscall.c
+@@ -104,6 +104,7 @@ extern int sys_wait(void);
+ extern int sys_write(void);
+ extern int sys_uptime(void);
+ extern int sys_halt(void);
++extern int sys_cps(void);
+ static int (*syscalls[])(void) = {
+ [SYS_fork]    sys_fork,
+ [SYS_exit]    sys_exit,
+@@ -126,7 +127,8 @@ static int (*syscalls[])(void) = {
+ [SYS_link]    sys_link,
+ [SYS_mkdir]   sys_mkdir,
+ [SYS_close]   sys_close,
+-[SYS_halt]    sys_halt
++[SYS_halt]    sys_halt,
++[SYS_cps]  sys_cps
+ };
+ 
+ void
+diff --git a/syscall.h b/syscall.h
+index 1dd7b9b..f03577c 100644
+--- a/syscall.h
++++ b/syscall.h
+@@ -21,3 +21,5 @@
+ #define SYS_mkdir  20
+ #define SYS_close  21
+ #define SYS_halt   50
++#define SYS_cps    22
++
+diff --git a/sysproc.c b/sysproc.c
+index 4fc95e9..db7aa61 100644
+--- a/sysproc.c
++++ b/sysproc.c
+@@ -90,6 +90,12 @@ sys_uptime(void)
+   return xticks;
+ }
+ 
++int
++sys_cps ( void )
++{
++	return cps ();
++}
++
+ int
+ sys_halt(void)
+ {
+diff --git a/user.h b/user.h
+index 14f64db..a134a35 100644
+--- a/user.h
++++ b/user.h
+@@ -24,6 +24,7 @@ char* sbrk(int);
+ int sleep(int);
+ int uptime(void);
+ int halt(void);
++int cps(void);
+ 
+ // ulib.c
+ int stat(const char*, struct stat*);
+@@ -38,3 +39,6 @@ void* memset(void*, int, uint);
+ void* malloc(uint);
+ void free(void*);
+ int atoi(const char*);
++
++
++
+diff --git a/usys.S b/usys.S
+index 0d4eaed..b4b3fc7 100644
+--- a/usys.S
++++ b/usys.S
+@@ -30,3 +30,4 @@ SYSCALL(sbrk)
+ SYSCALL(sleep)
+ SYSCALL(uptime)
+ SYSCALL(halt)
++SYSCALL(cps)
+-- 
+2.17.1
+
