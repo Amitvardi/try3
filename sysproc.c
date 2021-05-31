@@ -91,6 +91,12 @@ sys_uptime(void)
 }
 
 int
+sys_cps ( void )
+{
+	return cps ();
+}
+
+int
 sys_halt(void)
 {
   outw(0x604, 0x2000);

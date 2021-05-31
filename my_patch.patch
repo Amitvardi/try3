@@ -1,0 +1,183 @@
+diff --git a/Makefile b/Makefile
+index 2d5f2e4..679c570 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,6 +27,7 @@ OBJS = \
+ 	uart.o\
+ 	vectors.o\
+ 	vm.o\
++	
+ 
+ # Cross-compiling (e.g., on Mac OS X)
+ # TOOLPREFIX = i386-jos-elf
+@@ -180,9 +181,11 @@ UPROGS=\
+ 	_stressfs\
+ 	_usertests\
+ 	_wc\
++	_lsproc\
+ 	_zombie\
+ 	_open_files\
+-	_lsproc
++	
++
+ 
+ fs.img: mkfs README $(UPROGS)
+ 	./mkfs fs.img README $(UPROGS)
+@@ -251,11 +254,11 @@ qemu-nox-gdb: fs.img xv6.img .gdbinit
+ 
+ EXTRA=\
+ 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
+-	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
++	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c lsproc.c zombie.c\
+ 	printf.c umalloc.c\
+ 	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
+ 	.gdbinit.tmpl gdbutil\
+-        lsproc.c
++        
+ 
+ dist:
+ 	rm -rf dist
+diff --git a/defs.h b/defs.h
+index 82fb982..12e5529 100644
+--- a/defs.h
++++ b/defs.h
+@@ -120,6 +120,7 @@ void            userinit(void);
+ int             wait(void);
+ void            wakeup(void*);
+ void            yield(void);
++int             cps(void);
+ 
+ // swtch.S
+ void            swtch(struct context**, struct context*);
+@@ -186,5 +187,9 @@ void            switchkvm(void);
+ int             copyout(pde_t*, uint, void*, uint);
+ void            clearpteu(pde_t *pgdir, char *uva);
+ 
++
++
++
++
+ // number of elements in fixed-size array
+ #define NELEM(x) (sizeof(x)/sizeof((x)[0]))
+diff --git a/lsproc.c b/lsproc.c
+index 57e7ff4..9a7e09f 100644
+--- a/lsproc.c
++++ b/lsproc.c
+@@ -8,6 +8,8 @@
+ #include "user.h"
+ 
+ int main(){
++	cps();
++
+         exit();
+ }
+ 
+diff --git a/proc.c b/proc.c
+index 806b1b1..f2d432e 100644
+--- a/proc.c
++++ b/proc.c
+@@ -532,3 +532,27 @@ procdump(void)
+     cprintf("\n");
+   }
+ }
++
++int
++cps()
++{
++	struct proc *p;
++
++	//Enable interrupts on this processor.
++	sti();
++
++	//Loop over process table looking for process with pid.
++	acquire(&ptable.lock);
++	cprintf("name \t pid \t state \t \t Adress \n ");
++	for(p= ptable.proc; p< &ptable.proc[NPROC];p++){
++		if( p->state == SLEEPING )
++			cprintf("%s \t %d  \t SLEEPING \t %p \n ", p->name, p->pid,p);
++		else if (p -> state ==RUNNING)
++			cprintf("%s  %d \t RUNNING \t %p \n ",p->name, p->pid,p);
++		else if (p->state ==RUNNABLE)
++			cprintf("%s \t %d  \t RUNNABLE  \t %p \n ",p->name,p->pid,p);;
++			}
++	release(&ptable.lock);
++
++	return 22;
++}
+diff --git a/syscall.c b/syscall.c
+index d2218c3..514df3c 100644
+--- a/syscall.c
++++ b/syscall.c
+@@ -104,6 +104,7 @@ extern int sys_wait(void);
+ extern int sys_write(void);
+ extern int sys_uptime(void);
+ extern int sys_halt(void);
++extern int sys_cps(void);
+ static int (*syscalls[])(void) = {
+ [SYS_fork]    sys_fork,
+ [SYS_exit]    sys_exit,
+@@ -126,7 +127,8 @@ static int (*syscalls[])(void) = {
+ [SYS_link]    sys_link,
+ [SYS_mkdir]   sys_mkdir,
+ [SYS_close]   sys_close,
+-[SYS_halt]    sys_halt
++[SYS_halt]    sys_halt,
++[SYS_cps]  sys_cps
+ };
+ 
+ void
+diff --git a/syscall.h b/syscall.h
+index 1dd7b9b..f03577c 100644
+--- a/syscall.h
++++ b/syscall.h
+@@ -21,3 +21,5 @@
+ #define SYS_mkdir  20
+ #define SYS_close  21
+ #define SYS_halt   50
++#define SYS_cps    22
++
+diff --git a/sysproc.c b/sysproc.c
+index 4fc95e9..db7aa61 100644
+--- a/sysproc.c
++++ b/sysproc.c
+@@ -90,6 +90,12 @@ sys_uptime(void)
+   return xticks;
+ }
+ 
++int
++sys_cps ( void )
++{
++	return cps ();
++}
++
+ int
+ sys_halt(void)
+ {
+diff --git a/user.h b/user.h
+index 14f64db..a134a35 100644
+--- a/user.h
++++ b/user.h
+@@ -24,6 +24,7 @@ char* sbrk(int);
+ int sleep(int);
+ int uptime(void);
+ int halt(void);
++int cps(void);
+ 
+ // ulib.c
+ int stat(const char*, struct stat*);
+@@ -38,3 +39,6 @@ void* memset(void*, int, uint);
+ void* malloc(uint);
+ void free(void*);
+ int atoi(const char*);
++
++
++
+diff --git a/usys.S b/usys.S
+index 0d4eaed..b4b3fc7 100644
+--- a/usys.S
++++ b/usys.S
+@@ -30,3 +30,4 @@ SYSCALL(sbrk)
+ SYSCALL(sleep)
+ SYSCALL(uptime)
+ SYSCALL(halt)
++SYSCALL(cps)
